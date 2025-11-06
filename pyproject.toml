@@ -1,0 +1,32 @@
+[project]
+name = "torchlite"
+version = "0.3"
+description = "Dumb Torch Implementation"
+authors = [
+  { name = "richsi", email = "rzhsieh@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">= 3.9"
+license = { file = "LICENSE" }
+
+keywords = [
+  'machine learning',
+  'artificial intelligence',
+  'pytorch'
+]
+
+dependencies = [
+]
+
+[project.urls]
+Repository = "https://github.com/richsi/torchlite"
+
+[project.optional-dependencies]
+test = [
+  "pytest"
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
