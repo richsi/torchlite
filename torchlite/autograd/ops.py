@@ -8,6 +8,7 @@ class Context:
 
     def __init__(self):
         self.saved_tensors = ()  # op, ctx
+        self.axes = None
 
     def save_for_backward(self, *args):
         self.saved_tensors = args
@@ -76,7 +77,8 @@ def transpose(a, axes):
 
     if out.requires_grad:
         ctx = Context()
-        ctx.save_for_backward(a, axes)
+        ctx.save_for_backward(a)
+        ctx.axes = axes
         out._ctx = ("transpose", ctx)
 
     return out

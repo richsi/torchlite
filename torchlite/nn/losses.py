@@ -11,10 +11,6 @@ class MSELoss(Module):
             y_pred.shape == y_target.shape
         ), f"MSELoss: y_pred shape {y_pred.shape} does not match y_target shape {y_target.shape}"
 
-        delta = y_pred - y_target
-        squared_delta = delta ** 2
-
         squared_delta = (y_pred - y_target) ** 2
-
         loss = mean(squared_delta)
         return loss

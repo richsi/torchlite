@@ -152,7 +152,8 @@ def matmul_backward(ctx, grad):
 
 
 def transpose_backward(ctx, grad):
-    a, axes = ctx.saved_tensors
+    a, = ctx.saved_tensors
+    axes = ctx.axes
     if a.requires_grad:
         backward_axes = np.argsort(axes)
         inverse_perm = np.transpose(grad, backward_axes)  # undoes the initial transpose

@@ -3,3 +3,4 @@
 torchlite.egg-info/
 dist/
 **__pycache__/
+scripts/
