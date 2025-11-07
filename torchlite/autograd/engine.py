@@ -136,7 +136,7 @@ def sub_backward(ctx, grad):
 
 def neg_backward(ctx, grad):
     # -a
-    t, _ = ctx.saved_tensors
+    t, = ctx.saved_tensors
     if t.requires_grad:
         t.grad += _handle_broadcast(-grad, t.shape)
 
@@ -160,11 +160,19 @@ def transpose_backward(ctx, grad):
 
 
 def relu_backward(ctx, grad):
-    t, _ = ctx.saved_tensors
+    t, = ctx.saved_tensors
     if t.requires_grad:
         # 1 if t.data > 0 else 0
         local_grad = (t.data > 0).astype(t.data.dtype)
         t.grad += _handle_broadcast(grad * local_grad, t.shape)
+
+def mean_backward(ctx, grad):
+    t, = ctx.saved_tensors
+    if t.requires_grad:
+        N = t.data.size
+        local_grad_scalar = grad / N
+        grad_out = np.full_like(t.data, fill_value=local_grad_scalar)
+        t.grad += grad_out # no handle_broadcast since shape is matched
 
 
 op_map = {
@@ -176,4 +184,5 @@ op_map = {
     "matmul": matmul_backward,
     "transpose": transpose_backward,
     "relu": relu_backward,
+    "mean": mean_backward,
 }

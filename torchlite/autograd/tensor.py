@@ -67,10 +67,20 @@ class Tensor:
 
         return ops.transpose(self, axes)
 
+    def mean(self):
+      from . import ops
+
+      return ops.mean(self)
+
+    # --- activation functions --- 
+
     def relu(self):
         from . import ops
 
         return ops.relu(self)
+
+
+  
 
     def zero_grad(self):
         if self.requires_grad:

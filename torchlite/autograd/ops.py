@@ -90,3 +90,13 @@ def relu(a):
         ctx.save_for_backward(a)
         out._ctx = ("relu", ctx)
     return out
+
+
+def mean(a):
+    out_data = np.mean(a.data)
+    out = Tensor(out_data, requires_grad=a.requires_grad)
+    if out.requires_grad:
+        ctx = Context()
+        ctx.save_for_backward(a)
+        out._ctx = ("mean", ctx)
+    return out
