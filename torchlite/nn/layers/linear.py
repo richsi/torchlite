@@ -1,7 +1,7 @@
 # torchlite/nn/layers/linear.py
 
 from torchlite.nn.module import Module
-from torchlite.autograd.tensor import Tensor
+from torchlite.autograd import Tensor
 import numpy as np
 
 
