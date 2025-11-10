@@ -41,5 +41,11 @@ class Module:
         for param in self.parameters:
             param.grad = None
 
+    def train(self):
+        self.training = True
+
+    def eval(self):
+        self.training = False
+
     def summary(self):
         raise NotImplementedError()

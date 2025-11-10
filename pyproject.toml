@@ -1,6 +1,6 @@
 [project]
 name = "torchlite"
-version = "0.4.3"
+version = "0.4.5"
 description = "Dumb Torch Implementation"
 authors = [
   { name = "richsi", email = "rzhsieh@gmail.com" }

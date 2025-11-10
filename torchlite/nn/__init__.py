@@ -1,5 +1,5 @@
 # torchlite.nn
 
-from .layers.linear import Linear
-from .losses import MSELoss
 from .module import Module
+from .layers import Linear, Sequential
+from .losses import MSELoss
